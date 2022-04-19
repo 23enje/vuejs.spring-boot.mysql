@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuites errors="1"
+            failures="0"
+            tests="0">
+
+  <testsuite name="test"
+    errors="1" failures="0" hostname="" id="" package="test" skipped="2"
+    tests="0" time="0.000" timestamp="">
+  
+
+  
+    <system-err>
+      
+┌───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┐
+│                                                                                                                                                                   │
+│   Error: Unable to create the ChromeDriver process: The specified executable path does not exist:                                                                 │
+│   C:\Users\Eunje\Documents\GitHub\vuejs.spring-boot.mysql\front-end\node_modules\chromedriver\lib\chromedriver\chromedriver.exe                                   │
+│   ; verify if webdriver is configured correctly; using:                                                                                                           │
+│   {                                                                                                                                                               │
+│   start_process: true,                                                                                                                                            │
+│   server_path: &#39;C:\\Users\\Eunje\\Documents\\GitHub\\vuejs.spring-boot.mysql\\front-end\\node_modules\\chromedriver\\lib\\chromedriver\\chromedriver.exe&#39;,        │
+│   port: 9515,                                                                                                                                                     │
+│   host: &#39;localhost&#39;,                                                                                                                                              │
+│   ssl: false,                                                                                                                                                     │
+│   default_path_prefix: &#39;&#39;,                                                                                                                                        │
+│   proxy: undefined,                                                                                                                                               │
+│   cli_args: []                                                                                                                                                    │
+│   }                                                                                                                                                               │
+│                                                                                                                                                                   │
+│                                                                                                                                                                   │
+│                                                                                                                                                                   │
+└───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┘
+
+
+┌───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┐
+│                                                                                                                                                                   │
+│   Error: Unable to create the ChromeDriver process: The specified executable path does not exist:                                                                 │
+│   C:\Users\Eunje\Documents\GitHub\vuejs.spring-boot.mysql\front-end\node_modules\chromedriver\lib\chromedriver\chromedriver.exe                                   │
+│   ; verify if webdriver is configured correctly; using:                                                                                                           │
+│   {                                                                                                                                                               │
+│   start_process: true,                                                                                                                                            │
+│   server_path: &#39;C:\\Users\\Eunje\\Documents\\GitHub\\vuejs.spring-boot.mysql\\front-end\\node_modules\\chromedriver\\lib\\chromedriver\\chromedriver.exe&#39;,        │
+│   port: 9515,                                                                                                                                                     │
+│   host: &#39;localhost&#39;,                                                                                                                                              │
+│   ssl: false,                                                                                                                                                     │
+│   default_path_prefix: &#39;&#39;,                                                                                                                                        │
+│   proxy: undefined,                                                                                                                                               │
+│   cli_args: []                                                                                                                                                    │
+│   }                                                                                                                                                               │
+│                                                                                                                                                                   │
+│                                                                                                                                                                   │
+│                                                                                                                                                                   │
+└───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┘
+
+    </system-err>
+  
+
+    
+    <error message="Unable to create the ChromeDriver process: The specified executable path does not exist: C:\Users\Eunje\Documents\GitHub\vuejs.spring-boot.mysql\front-end\node_modules\chromedriver\lib\chromedriver\chromedriver.exe"><![CDATA[
+      Error: Unable to create the ChromeDriver process: The specified executable path does not exist: C:\Users\Eunje\Documents\GitHub\vuejs.spring-boot.mysql\front-end\node_modules\chromedriver\lib\chromedriver\chromedriver.exe
+    at new DriverService.Builder (C:\Users\Eunje\Documents\GitHub\vuejs.spring-boot.mysql\front-end\node_modules\selenium-webdriver\remote\index.js:318:13)
+    at new ServiceBuilder (C:\Users\Eunje\Documents\GitHub\vuejs.spring-boot.mysql\front-end\node_modules\selenium-webdriver\chromium.js:197:5)
+    at new ServiceBuilder (C:\Users\Eunje\Documents\GitHub\vuejs.spring-boot.mysql\front-end\node_modules\selenium-webdriver\chrome.js:168:5)
+    at ChromeServiceBuilder.createService (C:\Users\Eunje\Documents\GitHub\vuejs.spring-boot.mysql\front-end\node_modules\nightwatch\lib\transport\selenium-webdriver\service-builders\chrome.js:35:20)
+    at ChromeServiceBuilder.init (C:\Users\Eunje\Documents\GitHub\vuejs.spring-boot.mysql\front-end\node_modules\nightwatch\lib\transport\selenium-webdriver\service-builders\base-service.js:269:18)
+    at ChromeDriver.createDriverService (C:\Users\Eunje\Documents\GitHub\vuejs.spring-boot.mysql\front-end\node_modules\nightwatch\lib\transport\selenium-webdriver\index.js:175:57)
+    at ChromeDriver.createSession (C:\Users\Eunje\Documents\GitHub\vuejs.spring-boot.mysql\front-end\node_modules\nightwatch\lib\transport\selenium-webdriver\index.js:223:18)
+    at NightwatchClient.createSession (C:\Users\Eunje\Documents\GitHub\vuejs.spring-boot.mysql\front-end\node_modules\nightwatch\lib\core\client.js:640:27)
+    at TestSuite.createSession (C:\Users\Eunje\Documents\GitHub\vuejs.spring-boot.mysql\front-end\node_modules\nightwatch\lib\testsuite\index.js:437:24)
+    at TestSuite.startTestSuite (C:\Users\Eunje\Documents\GitHub\vuejs.spring-boot.mysql\front-end\node_modules\nightwatch\lib\testsuite\index.js:451:17)
+      ]]></error>  
+
+  
+    
+    <testcase
+      name="default e2e tests" classname="test">
+      <skipped />
+    </testcase>
+    
+    <testcase
+      name="example e2e test using a custom command" classname="test">
+      <skipped />
+    </testcase>
+    
+  
+  </testsuite>
+</testsuites>
