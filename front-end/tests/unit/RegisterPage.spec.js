@@ -1,5 +1,6 @@
-import { mount } from '@vue/test-utils'
+import { mount, flushPromises } from '@vue/test-utils'
 import RegisterPage from '@/views/RegisterPage'
+import registrationService from '@/services/registration'
 
 jest.mock('@/services/registration')
 
@@ -10,6 +11,7 @@ describe('RegisterPage', () => {
   let fieldPassword
   let buttonSubmit
   let mockRouter
+  let registerSpy
 
   beforeEach(() => {
     mockRouter = {
@@ -26,6 +28,12 @@ describe('RegisterPage', () => {
     fieldEmailAddress = wrapper.find('#emailAddress')
     fieldPassword = wrapper.find('#password')
     buttonSubmit = wrapper.find('form button[type="submit"]')
+    registerSpy = jest.spyOn(registrationService, 'register')
+  })
+
+  afterEach(() => {
+    registerSpy.mockReset()
+    registerSpy.mockRestore()
   })
 
   afterAll(() => {
@@ -51,7 +59,7 @@ describe('RegisterPage', () => {
 
   it('폼의 입력 데이터 바인딩 검증', async () => {
     const username = 'sunny'
-    const emailAddress = 'sunny@local'
+    const emailAddress = 'sunny@taskagile.com'
     const password = 'VueJsRocks!'
 
     wrapper.vm.form.username = username
@@ -71,24 +79,68 @@ describe('RegisterPage', () => {
     expect(stub).toBeCalled()
   })
 
-  it('새로운 유저 가입 실패 유무 검증', () => {
+  it('새로운 유저 가입 실패 유무 검증', async () => {
+    expect.assertions(2)
     const stub = jest.fn()
     wrapper.vm.$router.push = stub
     wrapper.vm.form.username = 'sunny'
-    wrapper.vm.form.emailAddress = 'sunny@local'
-    wrapper.vm.form.password = 'Jest!'
+    wrapper.vm.form.emailAddress = 'sunny@taskagile.com'
+    wrapper.vm.form.password = 'JestRocks!'
     wrapper.vm.submitForm()
-    wrapper.vm.$nextTick(() => {
-      expect(stub).toHaveBeenCalledWith({ name: 'LoginPage' })
-    })
+    expect(registerSpy).toBeCalled()
+    await wrapper.vm.$nextTick()
+    expect(stub).toHaveBeenCalledWith({ name: 'LoginPage' })
   })
 
-  it('가입 실패 시 검증', () => {
-    wrapper.vm.form.emailAddress = 'ted@local'
+  it('가입 실패 시 검증', async () => {
+    expect.assertions(3)
+    wrapper.setData({
+      form: {
+        username: 'ted',
+        emailAddress: 'ted@taskagile.com',
+        password: 'JestRocks!'
+      }
+    })
     expect(wrapper.find('.failed').isVisible()).toBe(false)
     wrapper.vm.submitForm()
-    wrapper.vm.$nextTick(null, () => {
-      expect(wrapper.find('.failed').isVisible()).toBe(true)
+    expect(registerSpy).toBeCalled()
+    await flushPromises()
+    expect(wrapper.find('.failed').isVisible()).toBe(true)
+  })
+
+  it('이메일 주소가 유효하지 않을 시 실패 검증', () => {
+    wrapper.setData({
+      form: {
+        username: 'test',
+        emailAddress: 'bad-email-address',
+        password: 'JestRocks!'
+      }
     })
+    wrapper.vm.submitForm()
+    expect(registerSpy).not.toHaveBeenCalled()
+  })
+
+  it('사용자가 유효하지 않을 시 실패 검증', () => {
+    wrapper.setData({
+      form: {
+        username: 'a',
+        emailAddress: 'test@taskagile.com',
+        password: 'JestRocks!'
+      }
+    })
+    wrapper.vm.submitForm()
+    expect(registerSpy).not.toHaveBeenCalled()
+  })
+
+  it('비밀번호가 유효하지 않을 시 실패 검증', () => {
+    wrapper.setData({
+      form: {
+        username: 'test',
+        emailAddress: 'test@taskagile.com',
+        password: 'Bad!'
+      }
+    })
+    wrapper.vm.submitForm()
+    expect(registerSpy).not.toHaveBeenCalled()
   })
 })
