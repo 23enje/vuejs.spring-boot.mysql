@@ -32,7 +32,7 @@ public class RegistrationPayloadTests {
     assertEquals(3, violations.size());
   }
 
-    @Test
+  @Test
   public void validate_payloadWithInvalidEmail_shouldFail() {
     RegistrationPayload payload = new RegistrationPayload();
     payload.setEmailAddress("BadEmailAddress");
